@@ -25,13 +25,13 @@
                 <div>
                     <label class="label-form" for="namber">
                         <span class="head-input">Транспортное средство</span>
-                        <input name1="trancport" class="form-input" type="text" placeholder="Транспортное средство">
+                        <input name="trancport" class="form-input" type="text" placeholder="Транспортное средство">
                     </label>
                 </div>
                 <div>
                     <label class="label-form" for="namber">
                         <span class="head-input">Ориентировочная дата прибытия к покупателю</span>
-                        <input name2="data-pribit" class="form-input"  type="date" placeholder="Дата">
+                        <input name="data-pribit" class="form-input"  type="date" placeholder="Дата">
                     </label>
                 </div>
                 <h2>
@@ -40,39 +40,59 @@
                 <div>
                     <label class="label-form" for="namber">
                         <span class="head-input">ФИО</span>
-                        <input name3="fio" class="form-input"  type="text" placeholder="Укажите ФИО водителя">
+                        <input name="fio" class="form-input"  type="text" placeholder="Укажите ФИО водителя">
                     </label>
                 </div>
                 <div>
                     <label class="label-form" for="name">
                         <span class="head-input">Паспортные данные</span>
                         <div class="dabl-input">
-                            <input name4="seria" class="form-input form-input-seriy" type="text" placeholder="Серия">
-                            <input name5="namber2" class="form-input form-input-number"  type="text" placeholder="Номер">
+                            <input name="seria" class="form-input form-input-seriy" type="text" placeholder="Серия">
+                            <input name="namber2" class="form-input form-input-number"  type="text" placeholder="Номер">
                         </div>
                     </label>
                 </div>
                 <div>
                     <label class="label-form" for="name">
                         <span class="head-input">Кем выдан</span>
-                        <input name6="vidan" class="form-input"  type="text" placeholder="Кем выдан">
+                        <input name="vidan" class="form-input"  type="text" placeholder="Кем выдан">
                     </label>
                 </div>
                 <div>
                     <label class="label-form" for="namber">
                         <span class="head-input">Когда выдан</span>
-                        <input name7="kogda-vidan" class="form-input"  type="text" placeholder="Когда выдан">
+                        <input name="kogda-vidan" class="form-input"  type="text" placeholder="Когда выдан">
                     </label>
                 </div>
                 <div class="block-button">
-                    <div class="button">
-                        <input class="button button-left" type="submit" id="button" value="Отправить" />
-                      </div>
+                    <button type="submit" id="button" class="button button-left">Отправить</button>
                     <button class="button button-right">Отменить</button>
                 </div>  
             </form>
         </div>
     </main>
     <!--<script src="https://aleksandr-cherepanov.github.io/form-test/js/script.js"></script>-->
+    <script>
+        $(document).ready(function() {
+
+//E-mail Ajax Send
+$("form").submit(function() { //Change
+    var th = $(this);
+    $.ajax({
+        type: "POST",
+        url: "mail.php", //Change
+        data: th.serialize()
+    }).done(function() {
+        alert("Thank you!");
+        setTimeout(function() {
+            // Done Functions
+            th.trigger("reset");
+        }, 1000);
+    });
+    return false;
+});
+
+});
+    </script>
 </body>
 </html>

@@ -1,31 +1,52 @@
 <?php
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+$method = $_SERVER['REQUEST_METHOD'];
 
-    require "PHPMailer/src/Exception.php";
-    require "PHPMailer/src/PHPMailer.php";
- 
-	$mail = new PHPMailer(true); /* Создаем объект MAIL */
-	$mail->CharSet = "UTF-8"; /* Задаем кодировку UTF-8 */
-	$mail->IsHTML(true); /* Разрешаем работу с HTML */
+//Script Foreach
+$c = true;
+if ( $method === 'POST' ) {
 
-	$name = $_POST["gos-namber"]; 
-	$name1 = $_POST["trancport"]; 
-	$name2 = $_POST["data-pribit"]; 
-	$name3 = $_POST["fio"]; 
-	$name4 = $_POST["seria"]; 
-	$name5 = $_POST["namber2"]; 
-	$name6 = $_POST["vidan"]; 
-	$name7 = $_POST["kogda-vidan"]; 
+	$project_name = trim($_POST["project_name"]);
+	$admin_email  = trim($_POST["admin_email"]);
+	$form_subject = trim($_POST["form_subject"]);
 
-	$body = $name . ' ' . $name1 . ' ' . $name2 . ' ' . $name3 . ' ' . $name4 . ' ' . $name5 . ' ' . $name6 . ' ' . $name7;
+	foreach ( $_POST as $key => $value ) {
+		if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
+			$message .= "
+			" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
+				<td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
+				<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
+			</tr>
+			";
+		}
+	}
+} else if ( $method === 'GET' ) {
 
-	$theme = "[Заявка с формой]";
+	$project_name = trim($_GET["project_name"]);
+	$admin_email  = trim($_GET["admin_email"]);
+	$form_subject = trim($_GET["form_subject"]);
 
-	$mail->addAddress("cherepanov3496@gmail.com");
-	$mail->Subject = $theme;
-	$mail->Body = $body;
+	foreach ( $_GET as $key => $value ) {
+		if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
+			$message .= "
+			" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
+				<td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
+				<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
+			</tr>
+			";
+		}
+	}
+}
 
-	$mail->send();
- 
+$message = "<table style='width: 100%;'>$message</table>";
+
+function adopt($text) {
+	return '=?UTF-8?B?'.Base64_encode($text).'?=';
+}
+
+$headers = "MIME-Version: 1.0" . PHP_EOL .
+"Content-Type: text/html; charset=utf-8" . PHP_EOL .
+'From: '.adopt($project_name).' <'.$admin_email.'>' . PHP_EOL .
+'Reply-To: '.$admin_email.'' . PHP_EOL;
+
+mail($admin_email, adopt($form_subject), $message, $headers );
