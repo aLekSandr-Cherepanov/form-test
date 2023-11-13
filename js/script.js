@@ -55,11 +55,3 @@ function loadFormData() {
     }
   }
 }
-
-// Применение маски серии паспорта
-let seriyaInput = document.querySelector('.form-input-seriy');
-Inputmask('999-999').mask(seriyaInput);
-
-// Применение маски номера паспорта
-let numberInput = document.querySelector('.form-input-number');
-Inputmask('99-99 999999').mask(numberInput);
