@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/intervolg/форма/style.css">  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js" integrity="sha512-xxxxxxxxxxxx" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+    <title>Form</title>
+</head>
+<body>
+    <main class="main">
+        <h1 class="head-form">Транспортные средства и водители</h1>
+        <div class="wrapper">
+            <form action="/">
+                <input type="hidden" name="project_name" value="Form test">
+                <input type="hidden" name="admin_email" value="cherepanov3496@gmail.com">
+                <input type="hidden" name="form_subject" value="Form Subject">
+                <div>
+                    <label class="label-form" for="name">
+                        <span class="head-input">Гос-номер</span>
+                        <input name="Гос-номер" class="form-input" type="text" placeholder="Укажите гос-номер">
+                    </label>
+                </div>
+                <div>
+                    <label class="label-form" for="namber">
+                        <span class="head-input">Транспортное средство</span>
+                        <input name="Транспортное средство" class="form-input" type="text" placeholder="Транспортное средство">
+                    </label>
+                </div>
+                <div>
+                    <label class="label-form" for="namber">
+                        <span class="head-input">Ориентировочная дата прибытия к покупателю</span>
+                        <input name="дата прибытия" class="form-input" name="date" type="date" placeholder="Дата">
+                    </label>
+                </div>
+                <h2>
+                    Данные о водителе
+                </h2>
+                <div>
+                    <label class="label-form" for="namber">
+                        <span class="head-input">ФИО</span>
+                        <input name="ФИО" class="form-input" name="date" type="text" placeholder="Укажите ФИО водителя">
+                    </label>
+                </div>
+                <div>
+                    <label class="label-form" for="name">
+                        <span class="head-input">Паспортные данные</span>
+                        <div class="dabl-input">
+                            <input name="Серия" class="form-input form-input-seriy" name="date" type="text" placeholder="Серия">
+                            <input name="Номер" class="form-input form-input-number" name="date" type="text" placeholder="Номер">
+                        </div>
+                    </label>
+                </div>
+                <div>
+                    <label class="label-form" for="name">
+                        <span class="head-input">Кем выдан</span>
+                        <input name="Кем выдан" class="form-input" name="date" type="text" placeholder="Кем выдан">
+                    </label>
+                </div>
+                <div>
+                    <label class="label-form" for="namber">
+                        <span class="head-input">Когда выдан</span>
+                        <input name="Когда выдан" class="form-input" name="date" type="text" placeholder="Когда выдан">
+                    </label>
+                </div>
+                <div class="block-button">
+                    <button class="button button-left">Отправить</button>
+                    <button class="button button-right">Отменить</button>
+                </div>  
+            </form>
+        </div>
+    </main>
+    <script src="/intervolg/форма/script.js"></script>
+</body>
+</html>
