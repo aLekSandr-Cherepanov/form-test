@@ -10,14 +10,14 @@
 	$mail->CharSet = "UTF-8"; /* Задаем кодировку UTF-8 */
 	$mail->IsHTML(true); /* Разрешаем работу с HTML */
 
-	$name = $_POST["gos-namber"]; /* Принимаем имя пользователя с формы .. */
-	$name1 = $_POST["trancport"]; /* Почту */
-	$name2 = $_POST["data-pribit"]; /* Телефон */
-	$name3 = $_POST["fio"]; /* Сообщение с формы */
-	$name4 = $_POST["seria"]; /* Сообщение с формы */
-	$name5 = $_POST["namber2"]; /* Сообщение с формы */
-	$name6 = $_POST["vidan"]; /* Сообщение с формы */
-	$name7 = $_POST["kogda-vidan"]; /* Сообщение с формы */
+	$name = $_POST["gos-namber"]; 
+	$name1 = $_POST["trancport"]; 
+	$name2 = $_POST["data-pribit"]; 
+	$name3 = $_POST["fio"]; 
+	$name4 = $_POST["seria"]; 
+	$name5 = $_POST["namber2"]; 
+	$name6 = $_POST["vidan"]; 
+	$name7 = $_POST["kogda-vidan"]; 
 
 	$body = $name . ' ' . $name1 . ' ' . $name2 . ' ' . $name3 . ' ' . $name4 . ' ' . $name5 . ' ' . $name6 . ' ' . $name7;
 
