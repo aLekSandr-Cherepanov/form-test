@@ -1,7 +1,7 @@
 let form = document.querySelector('form');
 let inputs = document.querySelectorAll('.form-input');
 
-// Сохраненные данные из localStorage
+// Загрузка сохраненных данных из localStorage
 loadFormData();
 
 // Обработчик события отправки формы
